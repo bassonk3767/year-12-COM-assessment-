@@ -17,7 +17,7 @@ def find_mean(data_set):
     return result / len(data_set)
 
 
-# Example usage
+# Example usage:
 
 # Define data set
 data_set = [1,5,5,12,17,11,11,6,4]
