@@ -22,6 +22,7 @@ def find_mean(data_set):
 # Define data set
 data_set = [1,5,5,12,17,11,11,6,4]
 
+# Calculate the mean
 mean = find_mean(data_set)
 
 # Convert the mean into a string
@@ -37,4 +38,3 @@ else:
 result = calculate_sum(data_set, mean)
 
 print(result)
-c
