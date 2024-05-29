@@ -1,6 +1,6 @@
 # Calculates the summation
 # of each data point in a sample
-def calculate_sum(data_set, mean):
+def find_sum(data_set, mean):
     result = 0
 
     for x in data_set:

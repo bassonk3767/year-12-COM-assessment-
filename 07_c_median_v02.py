@@ -36,8 +36,14 @@ def find_median(data_set):
 # Define data set
 data_set = [1,5,5,12,17,11,11,6,4]
 
+# First make a copy
+copy = data_set
+
+# THen, order the data set
+copy.sort()
+
 # Calculate the median
-median = find_median(data_set)
+median = find_median(copy)
 
 # Print out the median
 print(f"\n\nMedian of {data_set}"
