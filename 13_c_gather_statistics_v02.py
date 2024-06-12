@@ -176,15 +176,48 @@ def create_dataset(response):
         return 0
 
 
+# Creates a table for
+# the file output
+def create_table(names,un_sorted):
+
+    # Initialize the dictionary
+    data_summary_dict = {}
+
+    # Initialize the iterator used
+    # for retrieving data
+    j = 0
+
+    # loop through the names to get
+    # each piece of data for data sets
+    for i in names:
+
+        data_summary_dict[i] = un_sorted[j]
+        j += 1
+
+    # Define the indexes
+    # of the table
+    indexes = ["Mean (Average)","Median",
+               "Minimum value","Maximum value",
+               "Range","Lower quartile",
+               "Upper quartile","Interquartile range",
+               "Standard deviation"]
+
+    # Create the data frame
+    df = pd.DataFrame(data_summary_dict, index=indexes, columns=data_summary_dict.keys())
+
+    # Return the data frame
+    return df
+
+
+
 # Calculates and creates an array of
 # summaries on the data given by the user
 def gather_statistics(data_sets):
 
     # Initialize the array
-    # used for the file export
-    # function with the string
-    # version of the calculations
-    data_summaries = []
+    # used for the data sent to
+    # the file export function
+    un_sorted = []
 
     # If user did not exit the program,
     # continue with gathering data
@@ -197,7 +230,7 @@ def gather_statistics(data_sets):
 
         while True:
             data = input("\n\n\nPlease enter the data of\n the "
-                         "'{data_sets[i]}' dataset\n(ie 1,2,3,4)\n\n~~~ ")
+                         f"'{data_sets[i]}' dataset\n(ie 1,2,3,4)\n\n~~~ ")
 
             converted_data = create_dataset(data)
 
@@ -205,6 +238,29 @@ def gather_statistics(data_sets):
             # the iterator variable by 1
             if converted_data != 0:
                 i += 1
+
+                # Order the data from
+                # minimum to maximum
+                converted_data.sort()
+
+                # Get statistics
+                mean = find_mean(converted_data)
+                median = find_median(converted_data)
+                minimum = converted_data[0]
+                maximum = converted_data[-1]
+                range = ind_range(converted_data)
+                lower_quartile = find_lower_quartile(converted_data)
+
+                # Define the unsorted array of
+                # statistics that can be used for
+                # the table creation
+                # (sorts statistics, Sub array in larger array)
+                un_sorted_sub = [mean, median, minimum,
+                                 maximum, range, lower_quartile]
+
+                # Add the sub array to the
+                # unsorted array
+                un_sorted.append(un_sorted_sub)
 
     # If the given data sets are
     # assigned with 0, return 0
