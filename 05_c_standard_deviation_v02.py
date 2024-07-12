@@ -49,7 +49,7 @@ def standard_sample_deviation(data_set):
     else:
         mean = round(mean, 2)
 
-    summation = calculate_sum(data_set, mean)
+    summation = find_sum(data_set, mean)
 
     # Calculate the standard deviation
     deviation = ma.sqrt(summation / (length - 1))
@@ -84,7 +84,7 @@ def standard_population_deviation(data_set):
     else:
         mean = round(mean, 2)
 
-    summation = calculate_sum(data_set, mean)
+    summation = find_sum(data_set, mean)
 
     # Calculate the standard deviation
     deviation = ma.sqrt(summation / length)
