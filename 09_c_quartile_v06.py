@@ -45,7 +45,7 @@ def find_lower_quartile(data_set):
     for i in data_set:
         j += 1
 
-        if j != data_set.index(median) + 1:
+        if j != data_set.index(int(median)) + 1:
             to_median.append(i)
         else:
             to_median.append(i)
@@ -70,7 +70,7 @@ def find_upper_quartile(data_set):
 
     # Create an array that starts from
     # the median to the last piece of data
-    med_to_last = data_set[data_set.index(median):-1]
+    med_to_last = data_set[data_set.index(int(median)):-1]
 
     # Find the upper quartile
     upper_quartile = stcs.median(med_to_last)
